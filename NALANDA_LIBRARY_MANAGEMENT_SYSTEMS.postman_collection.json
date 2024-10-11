@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "b15f4ae0-6306-4934-81f1-63dfc9009bc3",
+		"name": "NALANDA_LIBRARY_MANAGEMENT_SYSTEM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29476804"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "add-book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MDc5MTE1OTdkMDc5NzQ0YmY1YzBmYSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyODU2MjIyNCwiZXhwIjoxNzI4NTY1ODI0fQ.oDxlkyD7f1SOoX3C8Kre7spiv0R-XvOHQ57A7RUjEyQ\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Waverley\",\r\n    \"author\": \"Sir Walter Scott\",\r\n    \"ISBN\": \"978-0140436600\",\r\n    \"publicationDate\": \"1814-07-07\",\r\n    \"genre\": \"Fiction\",\r\n    \"copies\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/books/add-book",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"books",
+								"add-book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit-book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MDc5MTE1OTdkMDc5NzQ0YmY1YzBmYSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyODU2MjIyNCwiZXhwIjoxNzI4NTY1ODI0fQ.oDxlkyD7f1SOoX3C8Kre7spiv0R-XvOHQ57A7RUjEyQ\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"1984\",\r\n    \"author\": \"George Orwellss\",\r\n    \"ISBN\": \"978-0451526342\",\r\n    \"publicationDate\": \"1949-06-08\",\r\n    \"genre\": \"Dystopian\",\r\n    \"copies\": 14\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/books/updatebook/6707c62e205d91423de502a9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"books",
+								"updatebook",
+								"6707c62e205d91423de502a9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/books/deletebook/6707c62e205d91423de502a9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"books",
+								"deletebook",
+								"6707c62e205d91423de502a9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list-book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/books?genre=Fiction&author=Scott&page=1&limit=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"books"
+							],
+							"query": [
+								{
+									"key": "genre",
+									"value": "Fiction"
+								},
+								{
+									"key": "author",
+									"value": "Scott"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "return-book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MDc4Y2UwNWUzZDlmM2U2NzIwMjRhZiIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3Mjg1NjQzMDQsImV4cCI6MTcyODU2NzkwNH0.iWL1F8gn8RxWhnzAc03c3SD4VCGeFyvzLXmZKxNhJg8\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"borrowId\":\"6707cd44205d91423de502ce\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/borrow/returnbook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"borrow",
+								"returnbook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrow-book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MDc4Y2UwNWUzZDlmM2U2NzIwMjRhZiIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3Mjg1NjQzMDQsImV4cCI6MTcyODU2NzkwNH0.iWL1F8gn8RxWhnzAc03c3SD4VCGeFyvzLXmZKxNhJg8\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\":\"67079a84ab2612e217584f8d\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/borrow/borrowbook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"borrow",
+								"borrowbook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrow-history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/borrow/borrowhistory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"borrow",
+								"borrowhistory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "most-borrowed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/reports/mostborrowed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reports",
+								"mostborrowed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "active-members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/reports/activemembers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reports",
+								"activemembers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "book-availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/reports/bookavailability",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reports",
+								"bookavailability"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Non-Auth",
+			"item": [
+				{
+					"name": "user signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Harish a\",\r\n  \"email\": \"rishikt04@gmail.com\",\r\n  \"password\": \"Rishi1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"rishikt8465@gmail.com\",\r\n  \"password\": \"Passw0rd123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
