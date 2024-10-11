@@ -1,27 +1,13 @@
-// src/graphql/resolvers.js
+
 
 import Book from '../models/bookModel.js';
 import Borrow from '../models/borrowModel.js';
 import User from '../models/userModel.js';
 import bcrypt from "bcryptjs"
 import jwt from 'jsonwebtoken';
+import { validateEmail,validatePassword } from '../validations/validations.js';
 
-// User Resolvers
-const validateEmail = (email) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-};
 
-const validatePassword = (password) => {
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-  return passwordRegex.test(password);
-};
-
-const validRoles = ['Admin', 'Member'];
-
-const validateRole = (role) => {
-  return validRoles.includes(role);
-};
 
 export const resolvers = {
   Query: {
