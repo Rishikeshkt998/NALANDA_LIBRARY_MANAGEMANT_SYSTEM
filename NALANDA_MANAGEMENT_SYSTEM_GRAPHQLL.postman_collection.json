@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "c1532372-50ef-4de0-b952-79d1994a56c3",
+		"name": "NALANDA_MANAGEMENT_SYSTEM_GRAPHQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29476804"
+	},
+	"item": [
+		{
+			"name": "user-signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": \"mutation($name: String!, $email: String!, $password: String!, $role: String!) { userSignup(name: $name, email: $email, password: $password, role: $role) { message user { id name email } } }\",\r\n  \"variables\": {\r\n    \"name\": \"Sophia Turner\",\r\n    \"email\": \"sophiaturner@example.com\",\r\n    \"password\": \"sophiaPassword456\",\r\n    \"role\": \"Admin\"  // Role can be \"Member\", \"Admin\", etc.\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": \"mutation($email: String!, $password: String!) { userLogin(email: $email, password: $password) { message token user { id name email role } } }\",\r\n  \"variables\": {\r\n    \"email\": \"emilyjohnson@example.com\",\r\n    \"password\": \"emilyPassword789\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addbook",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MDc5MTE1OTdkMDc5NzQ0YmY1YzBmYSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyODU5ODAyMCwiZXhwIjoxNzI4NjAxNjIwfQ.hDqbTGCBqtHquztFzeND1ILI3Jh6cDxdgfhitYRIsVk\"",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": \"mutation($input: AddBookInput!) { addBook(input: $input) { message book { id title author ISBN publicationDate genre copies } } }\",\r\n  \"variables\": {\r\n    \"input\": {\r\n      \"title\": \"To Kill a Mockingbird\",\r\n      \"author\": \"Harper Lee\",\r\n      \"ISBN\": \"9780060935467\",\r\n      \"publicationDate\": \"1960-07-11\",\r\n      \"genre\": \"Fiction\",\r\n      \"copies\": 5\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editbook",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MDc5MTE1OTdkMDc5NzQ0YmY1YzBmYSIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTcyODU5ODAyMCwiZXhwIjoxNzI4NjAxNjIwfQ.hDqbTGCBqtHquztFzeND1ILI3Jh6cDxdgfhitYRIsVk\"",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": \"mutation($id: ID!, $input: UpdateBookInput!) { updateBook(id: $id, input: $input) { id title author ISBN publicationDate genre copies } }\",\r\n  \"variables\": {\r\n    \"id\": \"67085297c86a0c36ba25985a\", \r\n    \"input\": {\r\n      \"title\": \"The Great Gatsby\",\r\n      \"author\": \"F. Scott Fitzgerald\",\r\n      \"ISBN\": \"978-3-16-148410-0\",  // New unique ISBN\r\n      \"publicationDate\": \"1925-04-10\",\r\n      \"genre\": \"Fiction\",\r\n      \"copies\": 5\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletebook",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": \"mutation($id: ID!) { deleteBook(id: $id) }\",\r\n  \"variables\": {\r\n    \"id\": \"67085297c86a0c36ba25985a\"  // Replace with the actual ID of the book you want to delete\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listbooks",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "borrowbook",
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "returnbook",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": \"mutation { returnBook(borrowId: \\\"1234567890abcdef12345678\\\") }\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "availablebook",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MDg0ZDE2ZDY1OTgzYWM4YTRlZjZiOSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3Mjg2MjkwMTUsImV4cCI6MTcyODYzMjYxNX0.vEZUNrVz_ogbPuQouGFLKIymBp4dMh4wcQrmBaQUDH4\"",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": \"query { availableBooks { title copies } }\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mostborrowedbook",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MDg0ZDE2ZDY1OTgzYWM4YTRlZjZiOSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3Mjg2MzU0ODYsImV4cCI6MTcyODYzOTA4Nn0.nfP9wuCfbT5CePKAyHHnrTTLhvMm6Rd-63ZvNcE9S3I\"",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": \"query { mostBorrowedBooks { bookId {  title author publicationDate genre } count } }\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activemembers",
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
