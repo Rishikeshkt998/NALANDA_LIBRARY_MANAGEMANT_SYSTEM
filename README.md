@@ -8,6 +8,8 @@
 - **Book Management**: Full CRUD capabilities to manage library books.
 - **Borrowing and Returning Books**: Users can borrow or return books, with complete tracking of borrowing history.
 - **Top Borrowed Books**: Fetch a list of the most borrowed books using MongoDB aggregation operations.
+- **Pagination and Filtering**: Implemented pagination and filtering for book listings, allowing users to browse large collections easily.
+- **Active Users & Available Books**: Retrieve a list of active users and the availability status of books.
 - **GraphQL Support**: Comprehensive GraphQL API for querying and mutating data related to users, books, and borrowing activities.
 
 ## Technologies Stack
@@ -21,18 +23,18 @@
 
 ### REST API Endpoints
 
-| Method | Endpoint                       | Functionality                                  |
-|--------|---------------------------------|------------------------------------------------|
-| `POST` | `/api/users/signup`             | Register a new user                            |
-| `POST` | `/api/users/login`              | Log in an existing user                        |
-| `GET`  | `/api/books`                    | Retrieve a list of all available books         |
-| `POST` | `/api/books/addbook`            | Add a new book to the library                  |
-| `PUT`  | `/api/books/updatebook/:id`     | Update details of a book by its ID             |
-| `DELETE` | `/api/books/deletebook/:id`   | Remove a book from the library by its ID       |
-| `POST` | `/api/borrow/borrowbook`        | Borrow a book                                  |
-| `PUT`  | `/api/borrow/returnbook`        | Return a previously borrowed book              |
-| `GET`  | `/api/borrow/borrowhistory`     | Retrieve borrow history                        |
-| `GET`  | `/api/report/mostborrowed`      | Retrieve most borrowed books details           |
-| `GET`  | `/api/report/activemembers`     | Return active members of the book              |
-| `GET`  | `/api/report/bookavailability`  | Retrieve availability of books                 |
+| Method   | Endpoint                        | Functionality                                     |
+|----------|----------------------------------|---------------------------------------------------|
+| `POST`   | `/api/users/signup`              | Register a new user                               |
+| `POST`   | `/api/users/login`               | Log in an existing user                           |
+| `GET`    | `/api/books`                     | Retrieve a list of all available books (supports pagination and filtering) |
+| `POST`   | `/api/books/addbook`             | Add a new book to the library                     |
+| `PUT`    | `/api/books/updatebook/:id`      | Update details of a book by its ID                |
+| `DELETE` | `/api/books/deletebook/:id`      | Remove a book from the library by its ID          |
+| `POST`   | `/api/borrow/borrowbook`         | Borrow a book                                     |
+| `PUT`    | `/api/borrow/returnbook`         | Return a previously borrowed book                 |
+| `GET`    | `/api/borrow/borrowhistory`      | Retrieve borrow history                           |
+| `GET`    | `/api/report/mostborrowed`       | Retrieve most borrowed books details              |
+| `GET`    | `/api/report/activemembers`      | Return active members of the library              |
+| `GET`    | `/api/report/bookavailability`   | Retrieve availability status of books  
 
